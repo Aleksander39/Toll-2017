@@ -1,21 +1,40 @@
-subproject{
+subprojects{
     apply plugin :'java'
+    repositories {
+        mavenGeneral()
+        mavenLocal()
+    }
 }
 project (':common'){
+    dependencies{
+        testCompile group: 'junit', name: 'junit', version: '4,12'
+    }
 
 
 }
 project(':server-core'){
+    dependencies{
+        testCompile group: 'junit', name: 'junit', version: '4,12'
+    }
 
 
 }
 project (':server-ui'){
+    dependencies{
+        testCompile group: 'junit', name: 'junit', version: '4,12'
+    }
 
 
 }
 project (':tracker-core'){
+    dependencies{
+        testCompile group: 'junit', name: 'junit', version: '4,12'
+    }
 
 }
 project (':tracker-ui'){
+    dependencies{
+        testCompile group: 'junit', name: 'junit', version: '4,12'
+    }
 
 }
