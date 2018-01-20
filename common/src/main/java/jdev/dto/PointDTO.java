@@ -1,6 +1,5 @@
 package jdev.dto;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,7 +8,24 @@ public class PointDTO {
     private double lon;
     private String autoId;
     private long time;
+    private double azimuth;
+    private int instaSpeed;
 
+    public int getInstaSpeed() {
+        return instaSpeed;
+    }
+
+    public void setInstaSpeed(int instaSpeed) {
+        this.instaSpeed = instaSpeed;
+    }
+
+    public double getAzimuth() {
+        return azimuth;
+    }
+
+    public void setAzimuth(double azimuth) {
+        this.azimuth = azimuth;
+    }
 
     public double getLat() {
         return lat;
@@ -40,14 +56,13 @@ public class PointDTO {
         return mapper.writeValueAsString(this);
     }
 
-
-
-
     @Override
     public String toString() {
         return "PointDTO{" +
                 "lat=" + lat +
                 ", lon=" + lon +
+                ",azim="+azimuth+
+                ",instaSpeed"+instaSpeed+
                 ", autoId='" + autoId + '\'' +
                 '}';
     }
