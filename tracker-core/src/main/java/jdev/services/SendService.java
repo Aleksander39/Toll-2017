@@ -15,7 +15,7 @@ public class SendService {
     private static final Logger log = LoggerFactory.getLogger(SendService.class);
     private long previous;
 
-    @Scheduled(fixedRate = 2000)
+    @Scheduled(cron = "${cron.prop}")
     public void send() throws InterruptedException {
         long current = System.currentTimeMillis();
         log.info((current - previous)+ storageService.take());

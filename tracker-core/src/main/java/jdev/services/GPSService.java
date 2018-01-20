@@ -16,6 +16,7 @@ public class GPSService {
     int d = 1;
     int f = 0;
     @PostConstruct
+    @Scheduled(cron = "${cron.prop.gps}")
     private  void init() throws JsonProcessingException, InterruptedException {
         storageService.put(getGPS());
     }
