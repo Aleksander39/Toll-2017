@@ -2,10 +2,13 @@ package jdev.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jdev.dto.PointDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GPSService {
+    @Autowired
+    StorageService storageService;
 
     int d = 1;
     int f = 0;
