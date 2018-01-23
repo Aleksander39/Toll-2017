@@ -10,16 +10,9 @@ import javax.annotation.PostConstruct;
 
 @Service
 public class GPSService {
-    @Autowired
-    StorageService storageService;
+    private static int d = 1;
+    private static int f = 0;
 
-    int d = 1;
-    int f = 0;
-    @PostConstruct
-    @Scheduled(cron = "${cron.prop.gps}")
-    private  void init() throws JsonProcessingException, InterruptedException {
-        storageService.put(getGPS());
-    }
 
     public String getGPS() throws JsonProcessingException {
         PointDTO pointDTO = new PointDTO();
