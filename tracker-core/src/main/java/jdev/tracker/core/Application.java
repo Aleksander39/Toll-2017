@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableScheduling
 @PropertySource("classpath:/app.properties")
-@ComponentScan({"jdev.services","jdev.tracker.core"})
+@ComponentScan({"services","tracker.core"})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
