@@ -2,11 +2,8 @@ package jdev.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jdev.dto.PointDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 
 @Service
 public class GPSService {
@@ -14,7 +11,7 @@ public class GPSService {
     private static int f = 0;
 
 
-    public String getGPS() throws JsonProcessingException {
+    public PointDTO getGPS() throws JsonProcessingException {
         PointDTO pointDTO = new PointDTO();
         double lat = (Math.random() * 20.3);
         double lon = (Math.random() * 41.2);
@@ -28,6 +25,6 @@ public class GPSService {
             pointDTO.setTime(System.currentTimeMillis());
             d++;
         }
-        return pointDTO.toJson();
+        return pointDTO;
     }
 }
