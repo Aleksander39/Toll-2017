@@ -11,27 +11,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.BlockingDeque;
 
 @Service
 public class SendService {
     @Autowired
     StorageService storageService;
-    @Autowired
-    GPSService gpsService;
 
     @Autowired
     RestTemplate restTemplate;
 
-    private static final Logger log = LoggerFactory.getLogger(SendService.class);
-
 
     @Scheduled(cron = "${cron.prop}")
-    public PointDTO send(PointDTO pointDTO){
-        return  restTemplate.postForObject("http://localhost:8080/coords",pointDTO,PointDTO.class);
+    public void send(){
+        for(PointDTO pointDTO:storageService.getAll()) {
+            restTemplate.postForObject("http://localhost:8080/point", pointDTO, PointDTO.class);
+        }
     }
+
+
     @PostConstruct
     @Scheduled(cron = "${cron.prop.gps}")
-    private  void init() throws JsonProcessingException, InterruptedException {
-        storageService.put(gpsService.getGPS());
+    private  void init(PointDTO pointDTO) throws JsonProcessingException, InterruptedException {
+        storageService.put(pointDTO);
     }
 }
