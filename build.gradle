@@ -23,12 +23,24 @@ project (':common'){
 
 
 }
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
 project(':server-core'){
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     dependencies{
         compile project(':common')
-        compile group: 'commons-io', name: 'commons-io', version: '2.5'
+        compile("org.springframework.boot:spring-boot-starter-web"){
+            exclude module: "spring-boot-starter-tomcat"
+        }
+        //compile group: 'commons-io', name: 'commons-io', version: '2.5'
         compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
@@ -55,23 +67,18 @@ project (':server-ui'){
 
 
 }
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
 
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
-    }
-}
 project (':tracker-core') {
-    apply plugin: 'java-library-distribution'
+    apply plugin: 'java'
 
     apply plugin: 'org.springframework.boot'
     dependencies {
         compile project(':common')
+        compile("org.springframework.boot:spring-boot-starter-web"){
+            exclude module: "spring-boot-starter-tomcat"
+        }
         compile group: 'commons-io', name: 'commons-io', version: '2.5'
-        compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
+       // compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
         compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.8.RELEASE'
