@@ -10,11 +10,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableScheduling
 @PropertySource("classpath:/app.properties")
-@ComponentScan({"services","tracker.core"})
+@ComponentScan({"services"})
 public class Application {
     public static void main(String[] args) {
+
         SpringApplication.run(Application.class, args);
     }
 
