@@ -14,10 +14,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .antMatchers("/error").authenticated()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .anyRequest().hasRole("USER")
+                .antMatchers("/", "/home").authenticated()
+                .antMatchers("/routes/**","/payments/**").hasRole("CLIENT")
+                .antMatchers("/registerClient/**").hasRole("MANAGER")
+                .antMatchers("/registerManager/**").hasRole("ROOT")
+                .antMatchers("/css/**, /img/**").permitAll()
                 .and()
             .formLogin()
                 .loginPage("/login")
@@ -31,8 +32,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
+                .withUser("client").password("password").roles("CLIENT")
                 .and()
-                .withUser("root").password("secret").roles("ADMIN", "USER");
+                .withUser("manager").password("password").roles("MANAGER", "CLIENT")
+                .and()
+                .withUser("root").password("secret").roles("ROOT","MANAGER","CLIENT");
     }
 }
