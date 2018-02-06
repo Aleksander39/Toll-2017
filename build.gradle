@@ -40,6 +40,7 @@ project(':server-core'){
         compile("org.springframework.boot:spring-boot-starter-web"){
             exclude module: "spring-boot-starter-tomcat"
         }
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
         //compile group: 'commons-io', name: 'commons-io', version: '2.5'
         compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
@@ -59,10 +60,11 @@ project(':server-core'){
 
 }
 project (':server-ui'){
-    apply plugin: 'java-library-distribution'
+    apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     dependencies{
         compile project(':common')
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
         // tag::security[]
         compile("org.springframework.boot:spring-boot-starter-security")
@@ -88,6 +90,7 @@ project (':tracker-core') {
         compile("org.springframework.boot:spring-boot-starter-web"){
             exclude module: "spring-boot-starter-tomcat"
         }
+        compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
         compile group: 'commons-io', name: 'commons-io', version: '2.5'
        // compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
