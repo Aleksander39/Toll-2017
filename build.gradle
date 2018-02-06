@@ -60,9 +60,21 @@ project(':server-core'){
 }
 project (':server-ui'){
     apply plugin: 'java-library-distribution'
+    apply plugin: 'org.springframework.boot'
     dependencies{
         compile project(':common')
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        // tag::security[]
+        compile("org.springframework.boot:spring-boot-starter-security")
+        // end::security[]
+        testCompile("junit:junit")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile("org.springframework.security:spring-security-test")
 
+    }
+    jar {
+        baseName = 'server-ui-security-boot'
+        version =  '0.1.0'
     }
 
 
@@ -70,7 +82,6 @@ project (':server-ui'){
 
 project (':tracker-core') {
     apply plugin: 'java'
-
     apply plugin: 'org.springframework.boot'
     dependencies {
         compile project(':common')
@@ -89,7 +100,7 @@ project (':tracker-core') {
 
     }
     jar {
-        baseName = 'gessing-boot'
+        baseName = 'tracker-core-boot'
         version = '0.1.0'
     }
 }
@@ -97,6 +108,7 @@ project (':tracker-ui'){
     apply plugin: 'java-library-distribution'
     dependencies{
         compile project(':common')
+
 
     }
 
