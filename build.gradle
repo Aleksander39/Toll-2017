@@ -41,12 +41,10 @@ project(':server-core'){
             exclude module: "spring-boot-starter-tomcat"
         }
         compile group: 'commons-io', name: 'commons-io', version: '2.5'
-        //compile group: 'commons-io', name: 'commons-io', version: '2.5'
-        compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
+        compile("org.springframework.boot:spring-boot-starter-jetty")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+        compile("org.springframework.boot:spring-boot-starter-actuator")
         compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.8.RELEASE'
-        // https://mvnrepository.com/artifact/org.springframework/spring-context
         compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
         testCompile("org.springframework.boot:spring-boot-starter-test")
 
@@ -90,15 +88,14 @@ project (':tracker-core') {
         compile("org.springframework.boot:spring-boot-starter-web"){
             exclude module: "spring-boot-starter-tomcat"
         }
-        compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
         compile group: 'commons-io', name: 'commons-io', version: '2.5'
-       // compile("org.springframework.boot:spring-boot-starter-web:1.1.8.RELEASE")
+        compile("org.springframework.boot:spring-boot-starter-jetty")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+        compile("org.springframework.boot:spring-boot-starter-actuator")
         compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.8.RELEASE'
-        // https://mvnrepository.com/artifact/org.springframework/spring-context
         compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
         testCompile("org.springframework.boot:spring-boot-starter-test")
+
 
 
     }
