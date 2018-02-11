@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @PropertySource("classpath:/app.properties")
 @ComponentScan({"jdev.services"})
-public class GPSService {
+public class GPSMain {
     public static void main(String[] args) {
 
-        SpringApplication.run(GPSService.class, args);
+        SpringApplication.run(GPSMain.class, args);
     }
 
     @Bean
