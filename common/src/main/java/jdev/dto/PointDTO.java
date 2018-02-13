@@ -11,6 +11,7 @@ public class PointDTO {
     private double azimuth;
     private int instaSpeed;
 
+
     public int getInstaSpeed() {
         return instaSpeed;
     }
@@ -63,7 +64,8 @@ public class PointDTO {
                 ", lon=" + lon +
                 ",azim="+azimuth+
                 ",instaSpeed"+instaSpeed+
-                ", autoId='" + autoId + '\'' +
+                ", autoId=" + autoId +
+                ",time='" +time+'\'' +
                 '}';
     }
 
