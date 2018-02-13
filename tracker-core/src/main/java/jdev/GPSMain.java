@@ -6,11 +6,13 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@PropertySource("classpath:/app.properties")
 @ComponentScan({"jdev.services"})
+@PropertySource("classpath:/app.properties")
+@EnableScheduling
 public class GPSMain {
     public static void main(String[] args) {
 

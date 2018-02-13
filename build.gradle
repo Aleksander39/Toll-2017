@@ -44,8 +44,9 @@ project(':server-core'){
         compile("org.springframework.boot:spring-boot-starter-jetty")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
         compile("org.springframework.boot:spring-boot-starter-actuator")
-        //compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.8.RELEASE'
-        //compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
+        compile("org.springframework.boot:spring-boot-devtools")
+       // compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.3.RELEASE'
+        compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
         testCompile("org.springframework.boot:spring-boot-starter-test")
 
 
@@ -92,8 +93,9 @@ project (':tracker-core') {
         compile("org.springframework.boot:spring-boot-starter-jetty")
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
         compile("org.springframework.boot:spring-boot-starter-actuator")
+        compile("org.springframework.boot:spring-boot-devtools")
         //compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.8.RELEASE'
-       // compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
+        compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
         testCompile("org.springframework.boot:spring-boot-starter-test")
 
 
