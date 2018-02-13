@@ -97,6 +97,7 @@ project (':tracker-core') {
         //compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.8.RELEASE'
         compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
         testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
 
 
 
