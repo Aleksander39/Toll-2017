@@ -27,10 +27,10 @@ public class TrackerController {
     @ResponseBody
     public PointDTO[] createPoint(@RequestBody PointDTO[] pointDTO) throws IOException {
         for (int i = 0; i < pointDTO.length; i++) {
-            logger.info(String.valueOf(pointDTO[i++]));
+            logger.info(String.valueOf(pointDTO[i]));
             try{
                 BufferedWriter writer = new BufferedWriter(new FileWriter("track.txt",true));
-                writer.write(String.valueOf(pointDTO[i++]));
+                writer.write(String.valueOf(pointDTO[i]));
                 writer.newLine();
                 writer.flush();
             }
