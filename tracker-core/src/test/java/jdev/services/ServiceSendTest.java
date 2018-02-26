@@ -7,23 +7,20 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import java.util.concurrent.BlockingDeque;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceSendTest {
-    @Mock
+  /*  @Mock
     RestTemplate restTemplate;
-    @InjectMocks
-    SendService sendService;
-
+*/
     @InjectMocks
     StorageService storageService;
 
     private PointDTO pointDTO;
-    private String url ="http://localhost:8080/points";
+   // private String url ="http://localhost:8080/points";
     private PointDTO[] point;
 
 
@@ -45,18 +42,25 @@ public class ServiceSendTest {
 
 
 
-    @Test
-    public void send() throws InterruptedException {
+   /* @Test
+    public void send()  {
         when(restTemplate.postForObject(url,pointDTO,PointDTO.class)).thenReturn(pointDTO)
                 .thenThrow(ResourceAccessException.class);
-    BlockingDeque<PointDTO> result = storageService.getAll();
-        assertNotNull(result);
-        pointDTO.setLon(45.87);
-        pointDTO.setLat(56.98);
-        pointDTO.setAzimuth(345);
-        pointDTO.setInstaSpeed(30);
-        pointDTO.setAutoId("o567gfd");
-        pointDTO.setTime(1502511617361L);
-    }
 
+    }*/
+@Test
+    public void getPoint(){
+        int i=0;
+    BlockingDeque<PointDTO> result = storageService.getAll();
+    point = new PointDTO[result.size()];
+    assertNotNull(result);
+    for(PointDTO pointDTO:result)
+        point[i++]=pointDTO;
+    assertEquals(point[0].getLat(), 56.98, 0);
+    assertEquals(point[0].getLon(), 45.87, 0);
+    assertEquals(point[0].getAutoId(), "o567gfd");
+    assertEquals(point[0].getTime(), 1502511617361L);
+    assertEquals(point[0].getAzimuth(), 345, 0);
+    assertEquals(point[0].getInstaSpeed(), 30, 0);
+}
 }
