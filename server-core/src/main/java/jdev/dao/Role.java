@@ -16,9 +16,9 @@ public class Role {
     @Column(name = "NAME", length = 32, nullable = false)
     String name;
 
-   /* @OneToOne(optional = false,mappedBy = "user")
+    @OneToOne(optional = false,mappedBy = "role")
     User user;
-*/
+
     public Role(String name) {
         this.name = name;
     }
@@ -52,11 +52,11 @@ public class Role {
         this.name = name;
     }
 
-  /*  public User getUser() {
+    public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }*/
+    }
 }
