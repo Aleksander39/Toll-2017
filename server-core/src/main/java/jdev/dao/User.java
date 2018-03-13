@@ -26,9 +26,11 @@ public class User {
     @Column(name = "DATE_BIRTH", nullable = false)
     String dateBirth;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "ROLE")
-    Role role;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "role_id",unique = true, nullable = false, updatable = false)
+    private Role role;
+
+
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -36,7 +38,7 @@ public class User {
             @JoinColumn(name = "USER_ID", nullable = false, updatable = false)
     },
             inverseJoinColumns = {
-                    @JoinColumn(name = "CAR_ID", nullable = false, updatable = false)
+                    @JoinColumn(name = "ID_CAR", nullable = false, updatable = false)
             }
     )
     java.util.Set<Car> cars = new HashSet<>();
