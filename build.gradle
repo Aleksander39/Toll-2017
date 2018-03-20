@@ -13,14 +13,26 @@ dependencies{
 
 
 project (':common'){
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
     dependencies{
+        compile("org.springframework.boot:spring-boot-starter-web") {
+            exclude module: "spring-boot-starter-tomcat"
+        }
         compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
         // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
         compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
-
+        compile("org.springframework.boot:spring-boot-starter-data-jpa")
+        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+        compile group: 'com.h2database', name: 'h2', version: '1.4.195'
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
 
     }
-
+    jar {
+        baseName = 'jpa-boot'
+        version =  '0.1.0'
+    }
 
 }
 buildscript {
@@ -47,8 +59,9 @@ project(':server-core'){
         compile("org.springframework.boot:spring-boot-devtools")
         compile group: 'com.h2database', name: 'h2', version: '1.4.196'
         compile("org.springframework.boot:spring-boot-starter-data-jpa")
-        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
         compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+        compile("org.springframework:spring-jdbc")
         testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
         testCompile("org.springframework.boot:spring-boot-starter-test")
         testCompile group: 'com.h2database', name: 'h2', version: '1.4.196'
@@ -100,8 +113,9 @@ project (':tracker-core') {
         compile("org.springframework.boot:spring-boot-devtools")
         compile group: 'com.h2database', name: 'h2', version: '1.4.196'
         compile("org.springframework.boot:spring-boot-starter-data-jpa")
-        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
         compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+        compile("org.springframework:spring-jdbc")
         testCompile("org.springframework.boot:spring-boot-starter-test")
         testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
         testCompile group: 'com.h2database', name: 'h2', version: '1.4.196'
@@ -113,6 +127,7 @@ project (':tracker-core') {
         baseName = 'tracker-core-boot'
         version = '0.1.0'
     }
+
 }
 project (':tracker-ui'){
     apply plugin: 'java-library-distribution'
