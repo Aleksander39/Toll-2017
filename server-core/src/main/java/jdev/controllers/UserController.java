@@ -18,6 +18,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
     @RequestMapping(value="/users", produces ="application/json")
     public List<User> getAllUsers(){
          return  userService.findAll();

@@ -19,12 +19,6 @@ import java.util.List;
 @RestController
 public class TrackerController {
 
-    /*private final RestTemplate restTemplate;
-
-    public TrackerController(@Autowired RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-*/
     Logger log = LoggerFactory.getLogger(TrackerController.class);
 
     @Autowired
