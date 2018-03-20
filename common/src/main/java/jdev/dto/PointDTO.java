@@ -3,10 +3,21 @@ package jdev.dto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+
+@Entity(name ="POINT_DTO")
+@IdClass(IdPointDTO.class)
 public class PointDTO {
+    @Id
+    @Column(name = "AUTO_ID")
+    private String autoId;
+
+    @Id
     private double lat;
     private double lon;
-    private String autoId;
     private long time;
     private double azimuth;
     private int instaSpeed;
@@ -62,10 +73,10 @@ public class PointDTO {
         return "PointDTO{" +
                 "lat=" + lat +
                 ", lon=" + lon +
-                ",azim="+azimuth+
-                ",instaSpeed"+instaSpeed+
+                ", azimuth=" +azimuth+
+                ", instaSpeed=" +instaSpeed+
                 ", autoId=" + autoId +
-                ",time='" +time+'\'' +
+                ", time=" +time+'\'' +
                 '}';
     }
 
@@ -76,5 +87,21 @@ public class PointDTO {
         return time;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        PointDTO pointDTO = (PointDTO) o;
+
+        if (time != pointDTO.time) return false;
+        return autoId.equals(pointDTO.autoId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = autoId.hashCode();
+        result = 31 * result + (int) (time ^ (time >>> 32));
+        return result;
+    }
 }

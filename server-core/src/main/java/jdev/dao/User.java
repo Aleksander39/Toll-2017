@@ -4,108 +4,68 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static javax.persistence.GenerationType.AUTO;
-
-
-
 @Entity
-@Table(name="user")
+@Table(name="USERS")
 public class User {
+
     @Id
-    @GeneratedValue(strategy = AUTO)
-    @Column(name = "ID")
-    int id;
+    private String login;
+    private String password;
 
-    @Column(name = "FIRST_NAME", nullable = false)
-    String firstName;
+    @ManyToMany(fetch= FetchType.EAGER)
+    @JoinTable(name = "ROLES_OF_USERS",
+            joinColumns={@JoinColumn(name="LOGIN")},
+            inverseJoinColumns={@JoinColumn(name="NAME")})
+    Set<Role> roles = new HashSet<Role>();
 
-    @Column(name = "LAST_NAME", nullable = false)
-    String lastName;
-
-
-    @Column(name = "DATE_BIRTH", nullable = false)
-    String dateBirth;
-
-    @OneToOne(optional = false)
-    @JoinColumn(name = "role_id",unique = true, nullable = false, updatable = false)
-    private Role role;
-
-
-
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_CAR", joinColumns = {
-            @JoinColumn(name = "USER_ID", nullable = false, updatable = false)
-    },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "ID_CAR", nullable = false, updatable = false)
-            }
-    )
-    java.util.Set<Car> cars = new HashSet<>();
-
-    public User(Integer id, String firstName, String lastName, String dateBirth,Role role, Set<Car> cars) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateBirth = dateBirth;
-        this.role = role;
-        this.cars = cars;
-    }
-    public User() {
+    public String getLogin() {
+        return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
     public String toString() {
-        return "User{ id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", dateBirth=" + dateBirth + ",role ="+role+","+cars+" }";
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!login.equals(user.login)) return false;
+        return password.equals(user.password);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        int result = login.hashCode();
+        result = 31 * result + password.hashCode();
+        return result;
     }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getDateBirth() {
-        return dateBirth;
-    }
-
-    public void setDateBirth(String dateBirth) {
-        this.dateBirth = dateBirth;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public Set<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
-    }
-
 }
