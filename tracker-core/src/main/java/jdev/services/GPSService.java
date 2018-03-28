@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 
 
 @Service
-public class GPSService {
+public class GPSService  {
 
     @Autowired
     StorageService storageService;

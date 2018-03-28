@@ -5,7 +5,7 @@ import jdev.dto.PointDTO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TrackService {
+public class TrackService  {
 
     private static int d = 1;
     private static int f = 0;
