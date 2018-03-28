@@ -31,26 +31,38 @@ package join;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 public class BadThreads {
- 
+
     static String message;
 
-    private static class CorrectorThread
-        extends Thread {
- 
+    private static class CorrectorThread extends Thread {
+
         public void run() {
-           message = "Помиловать";
+
+            message = "Помиловать";
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(message);
         }
     }
- 
+
     public static void main(String args[]) throws InterruptedException {
 
-        for (int i=0; i<10; i++) {
+
+        for (int i=0; i<1000; i++) {
             CorrectorThread correctorThread = new CorrectorThread();
-            message = "Казнить";
             correctorThread.start();
-            Thread.sleep(10);
-//            if (message.equalsIgnoreCase("Казнить"))
+
+
+            message = "Казнить";
+
+            // проверка
+            if (message.equalsIgnoreCase("Казнить"))
+                correctorThread.join(500);
                 System.out.println(message);
         }
     }
+
 }
