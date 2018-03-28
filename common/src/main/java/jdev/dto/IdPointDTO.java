@@ -2,7 +2,7 @@ package jdev.dto;
 
 import java.io.Serializable;
 
-public class IdPointDTO implements Serializable{
+public class IdPointDTO  implements Serializable{
 
     private String autoId;
     private long time;

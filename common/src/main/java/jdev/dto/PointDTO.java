@@ -80,7 +80,7 @@ public class PointDTO {
                 '}';
     }
 
-    public void setTime(long time) {
+    public void setTime (long time) {
         this.time=time;
     }
     public long getTime(){
