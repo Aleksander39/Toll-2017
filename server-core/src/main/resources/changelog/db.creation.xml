@@ -8,7 +8,7 @@
     <changeSet id="db.creation" author="">
         <sql>
 
-            CREATE TABLE POINT_DTO
+             CREATE TABLE POINT_DTO
             (
                 auto_id VARCHAR(12) NOT NULL,
                 time BIGINT NOT NULL,

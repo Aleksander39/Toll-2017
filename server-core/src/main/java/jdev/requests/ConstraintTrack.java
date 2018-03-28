@@ -1,6 +1,6 @@
 package jdev.requests;
 
-public class ConstraintTrack {
+public class  ConstraintTrack {
 
     String autoId;
     int pointCount;

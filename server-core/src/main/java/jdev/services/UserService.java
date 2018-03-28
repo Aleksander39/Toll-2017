@@ -1,7 +1,7 @@
 package jdev.services;
 
 import jdev.dao.User;
-import jdev.dao.repo.UserRepository;
+import jdev.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UserService {
+public class  UserService {
 
     @Autowired
     UserRepository userRepository;

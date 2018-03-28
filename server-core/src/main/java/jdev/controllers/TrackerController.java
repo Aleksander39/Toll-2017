@@ -97,7 +97,7 @@ public class TrackerController {
             ObjectMapper mapper = new ObjectMapper();
             PointDTO pointDTO = mapper.readValue(jsonTrack, PointDTO.class);
             return pointDTOService.update(pointDTO);
-        } catch (Exception e) {
+        } catch (Exception e)  {
             e.printStackTrace();
             return null;
         }

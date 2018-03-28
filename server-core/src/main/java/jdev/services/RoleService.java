@@ -1,7 +1,7 @@
 package jdev.services;
 
 import jdev.dao.Role;
-import jdev.dao.repo.RoleRepository;
+import jdev.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class RoleService {
+public class  RoleService {
 
     @Autowired
     RoleRepository roleRepository;

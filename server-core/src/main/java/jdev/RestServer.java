@@ -13,9 +13,9 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 
 @SpringBootApplication
-@ComponentScan({"jdev.controllers","jdev.dao","jdev.dao.repo","jdev.services"})
-
-public class RestServer {
+@ComponentScan({"jdev.controllers","jdev.dao","jdev.repositories","jdev.services"})
+@EnableAutoConfiguration(exclude = {LiquibaseAutoConfiguration.class})
+public class RestServer  {
 
     public static void main(String...args) throws IOException {
         SpringApplication.run(RestServer.class,args);
