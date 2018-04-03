@@ -17,7 +17,7 @@ import java.util.List;
 
 
 @RestController
-public class TrackerController {
+public class TrackerController  {
 
     Logger log = LoggerFactory.getLogger(TrackerController.class);
 
