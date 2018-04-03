@@ -132,7 +132,7 @@ project (':tracker-core') {
 project (':tracker-ui'){
     apply plugin: 'java-library-distribution'
     dependencies{
-        //compile project(':common')
+         //compile project(':common')
 
 
     }
