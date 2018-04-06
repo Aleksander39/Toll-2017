@@ -1,6 +1,6 @@
 package jdev.tracker.ui;
 
-import jdev.dto.PointDTO;
+ import jdev.dto.PointDTO;
 
 /**
  * Created by jdev on 07.03.2017.
